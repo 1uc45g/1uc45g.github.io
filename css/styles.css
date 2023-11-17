@@ -13141,3 +13141,14 @@ body {
   /* Soulignement du texte */
 }
 
+
+.user-icon{
+  height: 3vh;
+}
+.diploma-icon, .calendar-icon, .location-icon{
+  height: 4vh;
+}
+
+.invert-icon {
+  filter: invert(100%); 
+}
