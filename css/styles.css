@@ -3757,7 +3757,7 @@ fieldset:disabled .btn {
 
 .dropdown-menu {
   --bs-dropdown-zindex: 1000;
-  --bs-dropdown-min-width: 10rem;
+  --bs-dropdown-min-width: 5rem;
   --bs-dropdown-padding-x: 0;
   --bs-dropdown-padding-y: 0.5rem;
   --bs-dropdown-spacer: 0.125rem;
@@ -13098,7 +13098,7 @@ body {
 
 
 .img-border {
-  border: #01161E 1px solid;
+  border: #01161E 2px solid;
 }
 
 
@@ -13146,9 +13146,71 @@ body {
   height: 3vh;
 }
 .diploma-icon, .calendar-icon, .location-icon{
-  height: 4vh;
+  height: 3vh;
+  vertical-align:sub;
 }
 
 .invert-icon {
-  filter: invert(100%); 
+  filter: invert(100%);
+}
+
+.image-container {
+  height: 250px; /* Définir la hauteur fixe souhaitée */
+  background-color: #000; /* Couleur de fond (noir) pour les zones vides */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-container img {
+  max-height: 100%;
+  max-width: 100%;
+  height: auto;
+  width: auto;
+}
+
+.text-container {
+  height: 300px; /* Définir la hauteur fixe souhaitée pour les conteneurs de texte */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #000; /* Couleur de fond (noir) */
+  color: #fff; /* Couleur du texte */
+}
+
+@media (max-width: 992px) {
+  ul.dropdown-menu {
+      position: relative;
+  }
+}
+
+/* Cache le menu déroulant par défaut */
+.navbar-nav .dropdown-menu {
+  display: none;
+}
+
+/* Affiche le menu déroulant lorsqu'on survole l'icône .fas.fa-globe */
+.navbar-nav .dropdown:hover .dropdown-menu {
+  display: block;
+  position: absolute;
+  top: 100%; /* Positionnement juste en dessous de l'icône */
+  left: 0;
+  z-index: 1000;
+}
+
+/* Assurez-vous que le menu est correctement aligné */
+.navbar-nav .dropdown-menu {
+  background-color: #ffffff; /* Couleur de fond du menu */
+  border: 1px solid #ddd; /* Bordure légère pour le menu */
+  border-radius: 0.25rem; /* Coins arrondis */
+  min-width: 160px; /* Largeur minimale */
+}
+
+/* Affiche correctement le menu sur les petits écrans */
+@media (max-width: 992px) {
+  .navbar-nav .dropdown-menu {
+      left: auto;
+      right: 0; /* Aligne le menu à droite */
+  }
 }
