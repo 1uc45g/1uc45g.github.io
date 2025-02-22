@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="style.css" />
+    <title>Analyse d'un fichier calendrier (ICS)</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<div class="wrapper">
+<section id="info">
+    <h1>Analyse d'un fichier .ics</h1>
+    <h3>Fichier calendrier contenant des évènements entre le 29 Septembre 2021 a 14h30 et le 01 Decembre 2021 a 15h15.</br> Nous y avons releve 644 evenements.</h3>
+    </section>
+    <section id="chartnb1">
+    <h3>Répartition des heures de TP, TD, CM ou non renseignées pour chaque unité d'enseignement</h3>
+        <canvas id="myChart1"></canvas>
+    </section>
+    <section id="tablenb1">
+    <h3> 5 évènements ont été identifiés comme ne faisant pas partie d'une unité d'enseignement, soit 0.78 % du nombre total d'évènements sur la période concernée,ceux-ci ont été associés à leur durée dans le tableau suivant :</h3>
+        <table>
+        <tr>
+        <th>Nom de l'évènement</th>
+        <th>Durée (en heures)</th>
+        <tr>
+            <td>EVENEMENT RENTREE ECOLO</td>
+            <td>6.0</td>
+        </tr>
+     <tr>
+            <td>ACCUEIL NOUVEAUX  ETUDIANTS HALLE AU GRAINS</td>
+            <td>4.0</td>
+        </tr>
+     <tr>
+            <td>REUNION ACCUEIL VIE ETUDIANTE</td>
+            <td>1.5</td>
+        </tr>
+     <tr>
+            <td>JJ012</td>
+            <td>1.0</td>
+        </tr>
+     <tr>
+            <td>PPP1/PPP3 CONSEIL DEPARTEMENT R&T</td>
+            <td>1.5</td>
+        </tr>
+     
+        </tr>
+        </table>
+    </section>
+    <section id="tablenb2">
+    <h3>Pourcentage du nombre évènements et d'heures consacré à chaque type d'évènement associé à une unité d'enseignement.</h3>
+        <table>
+        <tr>
+        <th>Type d'évènement</th>
+        <th>Part horaire</th>
+        <th>Part d'évènements</th>
+        <tr>
+            <td>TP</td>
+            <td>52.0%</td>
+            <td>45.34%</td>
+        </tr>
+     <tr>
+            <td>TD</td>
+            <td>22.51%</td>
+            <td>31.99%</td>
+        </tr>
+     <tr>
+            <td>CM</td>
+            <td>3.17%</td>
+            <td>4.5%</td>
+        </tr>
+     <tr>
+            <td>Autres heures</td>
+            <td>22.32%</td>
+            <td>17.39%</td>
+        </tr>
+     
+        </tr>
+        </table>
+    </section>
+    <section id="chartnb2">
+        <h3>Répartition des heures de TP, TD, CM et autre heures sur la période analysée</h3>
+        <canvas id="myChart2"></canvas>
+    </section>
+    <section id="chartnb3">
+        <h3>Durée moyenne d'un évènement de type TP, TD, CM et cours (type non spécifié) sur la période analysée (en heures)</h3>
+        <canvas id="myChart3"></canvas>
+    </section>
+    <footer>
+        Codé dans le cadre de la SAE 105 à l'IUT de Blois.
+    </footer>
+    </div>
+    
+</body>
+  <script>
+        var ctx = document.getElementById("myChart1").getContext('2d');
+        var myChart1 = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['R108', 'R113', 'SAE11', 'R107', 'SAE14', 'SAE12', 'SAE15', 'R111', 'R110', 'R112', 'R101', 'R115', 'SAE13', 'R103', 'R106', 'R102', 'R105', 'R114', 'R109', 'R104', 'Autres evenements'],
+                datasets: [{
+                    label: 'heures de TP',
+                    data: ['84.0', '0', '24.0', '108.0', '0', '0', '12.0', '72.0', '66.0', '18.0', '96.0', '0', '24.0', '36.0', '30.0', '24.0', '24.0', '0', '24.0', '72.0', '0'],
+                    backgroundColor: "rgba(0,204,0,1)"
+                },{
+                    label: 'heures de TD',
+                    data: ['6.0', '48.0', '3.0', '12.0', '21.0', '6.0', '6.0', '24.0', '15.0', '3.0', '21.0', '24.0', '9.0', '12.0', '15.0', '12.0', '6.0', '30.0', '6.0', '30.0', '0'],
+                     backgroundColor: "rgba(255,0,255,1)"
+                },{
+                    label:'heures de CM',
+                    data:['3.0', '0', '0', '6.0', '0', '0', '0', '0', '0', '4.5', '10.5', '0', '0', '0', '7.5', '6.0', '3.0', '0', '3.0', '0', '0'],
+                     backgroundColor: "rgba(0,128,255,1)"
+                },{
+                    label:'autres heures',
+                    data:['0', '0', '48.0', '0', '48.0', '60.0', '48.0', '0', '0', '39.0', '0', '0', '48.0', '0', '0', '0', '0', '0', '1.5', '0', '14.0'],
+                    backgroundColor: "rgba(255,128,0,1)"
+                }]
+            }
+        });
+
+    var ctx = document.getElementById("myChart2").getContext('2d');
+        var myChart2 = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['TP', 'TD', 'CM', 'Autres heures'],
+                datasets: [{
+                    data: [714.0, 309.0, 43.5, 306.5],
+                    backgroundColor: ['rgba(0,204,0,1)', 'rgba(255,0,255,1)', 'rgba(0,128,255,1)', 'rgba(255,128,0,1)']
+                }]
+            }
+        });
+
+    var ctx = document.getElementById("myChart3").getContext('2d');
+        var myChart3 = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['TP', 'TD', 'CM', 'Autres heures'],
+                datasets: [{
+                    data: [2.4452054794520546, 1.5, 1.5, 2.736607142857143],
+                    backgroundColor: ['rgba(0,204,0,1)', 'rgba(255,0,255,1)', 'rgba(0,128,255,1)', 'rgba(255,128,0,1)']
+                }]
+            }
+        });
+    </script>
+</html>
