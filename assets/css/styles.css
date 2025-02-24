@@ -13145,7 +13145,7 @@ body {
 .user-icon{
   height: 3vh;
 }
-.diploma-icon, .calendar-icon, .location-icon{
+.diploma-icon, .calendar-icon, .location-icon, .internship-icon, .path-icon{
   /*height: 3vh;*/
   vertical-align:sub;
   height: 1.4em;
@@ -13164,11 +13164,35 @@ body {
   justify-content: center;
 }
 
+/*
 .image-container img {
   max-height: 100%;
   max-width: 100%;
   height: auto;
   width: auto;
+}
+*/
+.image-container img {
+  width: 100%;
+  height: 250px; /* Ajuste selon tes besoins */
+  object-fit: cover; /* Permet de zoomer sans déformer */
+  object-position: center; /* Centre l’image */
+}
+
+.image-container img.focus-left {
+  object-position: left;
+}
+
+.image-container img.focus-right {
+  object-position: right;
+}
+
+.image-container img.focus-top {
+  object-position: top;
+}
+
+.image-container img.focus-bottom {
+  object-position: bottom;
 }
 
 .text-container {
@@ -13219,4 +13243,8 @@ body {
 
 .timeline-body li {
   font-size: 1.1em;
+}
+
+.subtimeline-body li {
+  font-size: 1.0em;
 }
