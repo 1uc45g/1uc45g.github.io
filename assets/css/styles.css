@@ -13248,3 +13248,130 @@ body {
 .subtimeline-body li {
   font-size: 1.0em;
 }
+
+
+/*                                      */
+/****** Ajouts pour la partie CV ********/
+/*                                      */
+
+.timeline {
+  position: relative;
+  padding-left: 40px;
+  border-left: 4px solid #FFFFFF;
+}
+
+/* Styles spécifiques pour l'élément "actuel" */
+.timeline-item {
+  position: relative;
+  margin-top: 30px;
+}
+
+.timeline-item.short {
+  position: relative;
+  margin-top: 20px;
+}
+
+.timeline-item:first-child {
+  margin-top: 0;
+}
+.timeline-item:last-child {
+  margin-bottom: 30px;
+}
+.timeline-date {
+  position: absolute;
+  left: -265px;
+  width: 200px;
+  text-align: right;
+  font-size: 1.1rem;
+  color: #777;
+  font-weight: bold;
+  top: 20px;
+}
+
+.timeline-content {
+  background-color: #FFFFFF;
+  padding: 20px 30px 12px 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Cercle pour chaque élément de la timeline */
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -58px;
+  top: 10px;
+  width: 34px;
+  height: 34px;
+  background-color: #212529;
+  border: 3px solid #FFFFFF;
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+/* Styles spécifiques pour l'élément "actuel" */
+.timeline-item.current .timeline-content {
+  width: calc(100% - 80px); /* L'élément actuel prend toute la largeur */
+}
+
+.timeline-item.current::before {
+  width: 40px;  /* Un cercle un peu plus grand pour l'élément actuel */
+  height: 40px;
+  left: -62px;
+  border-width: 4px; /* Cercle plus visible */
+}
+
+/* Styles spécifiques pour l'élément "court" */
+.timeline-item.short .timeline-content {
+  width: 70%;  /* L'élément court occupe 60% de la largeur */
+}
+
+.timeline-item.short::before {
+  width: 28px; /* Cercle plus petit */
+  height: 28px;
+  left: -56px; /* Ajuste la position du cercle */
+  border-width: 3px; /* Cercle plus fin */
+  background-color: #212529;  /* Change la couleur du cercle pour l'élément court */
+}
+
+.timeline-item.short .timeline-date {
+  left: -260px;  /* Ajuste les dates pour qu'elles restent alignées à gauche */
+}
+
+
+
+/* --- 3) Version mobile : la timeline devient verticale (colonne simple) --- */
+@media (max-width: 992px) {
+
+  .timeline {
+    border-left: none;
+    padding-left: 0;
+  }
+
+  .timeline-date, .timeline-item.short .timeline-date{
+    position: relative;
+    left: 0;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 8px;
+    top: 0;
+  }
+
+  .timeline-item::before {
+    display: none; /* On peut le garder, mais on le masque pour plus de clarté */
+  }
+
+  .timeline-item,
+  .timeline-item.short,
+  .timeline-item.current {
+    margin-top: 10px;
+  }
+
+  .timeline-content.current {
+    width: 100% !important;
+  }
+
+ .timeline-content.short {
+    width: 80% !important;
+  }
+}
